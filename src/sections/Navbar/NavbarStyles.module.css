@@ -6,7 +6,9 @@
   background-color: var(--background-color);
   z-index: 1000;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
 }
 
 .navContent {
@@ -15,6 +17,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 1rem;
 }
 
 .links {
@@ -28,24 +31,50 @@
   text-decoration: none;
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
-  transition: color 0.3s ease;
+  position: relative;
+  padding: 0.5rem 0;
 }
 
-.links a:hover {
-  color: var(--btn-color);
+.links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--btn-color);
+  transition: width 0.3s ease;
 }
 
-.themeToggle img {
-  width: 24px;
-  cursor: pointer;
+.links a:hover::after {
+  width: 100%;
+}
+
+.themeToggle {
+  display: none;
 }
 
 @media (max-width: 768px) {
-  .links {
-    gap: 1rem;
+  .navbar {
+    padding: 0.5rem;
   }
   
+  .links {
+    gap: 1rem;
+    font-size: 0.875rem;
+  }
+
   .links a {
     font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .links {
+    gap: 0.5rem;
+  }
+
+  .links a {
+    font-size: 0.75rem;
   }
 }
