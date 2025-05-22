@@ -8,7 +8,6 @@
   padding: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
 }
 
 .navContent {
@@ -20,10 +19,16 @@
   padding: 0 1rem;
 }
 
+.logo {
+  color: var(--text-color);
+  font-family: 'Rubik', sans-serif;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .links {
   display: flex;
   gap: 2rem;
-  margin: 0 auto;
 }
 
 .links a {
@@ -32,26 +37,11 @@
   font-family: 'Roboto Mono', monospace;
   font-size: 1rem;
   position: relative;
-  padding: 0.5rem 0;
-}
-
-.links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--btn-color);
-  transition: width 0.3s ease;
-}
-
-.links a:hover::after {
-  width: 100%;
 }
 
 .themeToggle {
-  display: none;
+  width: 24px;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
@@ -59,9 +49,12 @@
     padding: 0.5rem;
   }
   
+  .logo {
+    font-size: 1.2rem;
+  }
+  
   .links {
     gap: 1rem;
-    font-size: 0.875rem;
   }
 
   .links a {

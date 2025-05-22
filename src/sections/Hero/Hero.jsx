@@ -1,7 +1,4 @@
 import styles from './HeroStyles.module.css';
-import heroImg from '../../assets/Design uten navn.png';
-import sun from '../../assets/sun.svg';
-import moon from '../../assets/moon.svg';
 import twitterLight from '../../assets/twitter-light.svg';
 import twitterDark from '../../assets/twitter-dark.svg';
 import githubLight from '../../assets/github-light.svg';  
@@ -10,55 +7,79 @@ import linkedinLight from '../../assets/linkedin-light.svg';
 import linkedinDark from '../../assets/linkedin-dark.svg';
 import CV from '../../assets/cv.pdf';
 import { useTheme } from '../../common/ThemeContext';
+import { motion } from 'framer-motion';
 
 function Hero() {
-  const { theme, toggleTheme } = useTheme();
-
-  const themeIcon = theme === 'light' ? sun : moon;
+  const { theme } = useTheme();
   const twitterIcon = theme === 'light' ? twitterLight : twitterDark;
   const githubIcon = theme === 'light' ? githubLight : githubDark;
   const linkedinIcon = theme === 'light' ? linkedinLight : linkedinDark;
 
   return (
     <section id="hero" className={styles.container}>
-      <div className={styles.colorModeContainer}>
+      <motion.div 
+        className={styles.colorModeContainer}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+      >
         <img
-          src="chandu.png"
+          src="/chandu.png"
           className={styles.hero}
-          alt="Profile picture of Harris Johnsen"
+          alt="Profile picture"
         />
-        <img
-          className={styles.colorMode}
-          src={themeIcon}
-          alt="Color mode icon"
-          onClick={toggleTheme}
-        />
-      </div>
-      <div className={styles.info}>
+      </motion.div>
+      <motion.div 
+        className={styles.info}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <h1>
-          ChandU
+          Siddartha
           <br />
-          ChintalapudI
+          Yernagula
         </h1>
         <h2>Full-Stack Web Developer</h2>
-        <span>
-          <a href="https://twitter.com/" target="_blank">
+        <motion.span
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <motion.a 
+            href="https://twitter.com/" 
+            target="_blank"
+            whileHover={{ scale: 1.2 }}
+          >
             <img src={twitterIcon} alt="Twitter icon" />
-          </a>
-          <a href="https://github.com/" target="_blank">
+          </motion.a>
+          <motion.a 
+            href="https://github.com/" 
+            target="_blank"
+            whileHover={{ scale: 1.2 }}
+          >
             <img src={githubIcon} alt="Github icon" />
-          </a>
-          <a href="https://linkedin.com/" target="_blank">
+          </motion.a>
+          <motion.a 
+            href="https://linkedin.com/" 
+            target="_blank"
+            whileHover={{ scale: 1.2 }}
+          >
             <img src={linkedinIcon} alt="Linkedin icon" />
-          </a>
-        </span>
+          </motion.a>
+        </motion.span>
         <p className={styles.description}>
-         Full stack developer with a passion for building modern web apps for businesses.
+          Full stack developer with a passion for building modern web apps for businesses.
         </p>
-        <a href={CV} download>
+        <motion.a 
+          href={CV} 
+          download
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
           <button className="hover">Resume</button>
-        </a>
-      </div>
+        </motion.a>
+      </motion.div>
     </section>
   );
 }
