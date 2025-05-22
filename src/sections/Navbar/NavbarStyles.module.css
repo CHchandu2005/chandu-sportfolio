@@ -1,0 +1,51 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--background-color);
+  z-index: 1000;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.links a:hover {
+  color: var(--btn-color);
+}
+
+.themeToggle img {
+  width: 24px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .links {
+    gap: 1rem;
+  }
+  
+  .links a {
+    font-size: 0.875rem;
+  }
+}
